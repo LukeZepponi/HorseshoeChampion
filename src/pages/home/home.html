@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Horseshoe Champion
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div *ngIf="auth.authenticated == true">
+    <p>
+      Welcome, <b>{{auth.getEmail()}}</b> 
+    </p>
+    <ion-footer>
+      <div *ngIf="currentGame!=null"><button ion-button (click)="LeaveGame()">Leave Game</button></div>  
+      <button ion-button (click)="logout()">Log Out</button>  
+    </ion-footer>
+    
+    <div *ngIf="currentGame!=null">
+      <ion-row>
+        <button ion-button (click)="Enterscore(0)">0</button>
+        <button ion-button (click)="Enterscore(1)">1</button>
+        <button ion-button (click)="Enterscore(2)">2</button>
+      </ion-row>
+      <ion-row>
+        <button ion-button (click)="Enterscore(3)">3</button>
+        <button ion-button (click)="Enterscore(4)">4</button>
+        <button ion-button (click)="Enterscore(6)">6</button>
+      </ion-row>
+      <ion-row>
+        {{enterscore}}
+        <button ion-button (click)="recordscore()" full>ENTER</button>
+        
+      </ion-row>
+      <ion-row *ngFor="let s of scores">
+          <button ion-button>{{s}}</button>
+ 
+         </ion-row>
+      
+
+    </div>
+      
+    
+      <div *ngIf="currentGame==null">
+        <button ion-button (click)="CreateGame()">Create Game</button>
+    <ion-item *ngFor="let game of Games | async">
+
+      {{game.name}}
+      <button ion-button (click)="JoinGame(game.id)">Join Game</button>
+      
+    </ion-item>
+    </div>
+    
+    
+  </div>
+  <div *ngElse>
+    <button ion-button (click)="login()">Log In</button>
+  </div>
+</ion-content>
