@@ -33,10 +33,12 @@
         <button ion-button (click)="recordscore()" full>ENTER</button>
         
       </ion-row>
-      <ion-row *ngFor="let s of scores">
+      <ion-col *ngFor="let s of scores">
           <button ion-button>{{s}}</button>
- 
-         </ion-row>
+      </ion-col>
+      <!-- <div *ngFor="let s of scores">
+          <tr *ngIf = "(s%2) == 0"><button ion-button>{{s}}</button></tr>
+      </div> -->
       
 
     </div>

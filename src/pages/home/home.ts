@@ -15,11 +15,12 @@ export class HomePage {
   currentGame: firebase.firestore.DocumentSnapshot
   scores: any;
   enterscore: any;
-  currertscore1: any;
+  currentscore1: any;
   currentscore2: any;
   constructor(public navCtrl: NavController, public auth: FirebaseAuthProvider, public alertCtrl : AlertController, public database: FirebaseDataProvider) {
     this.currentGame=null;
     this.scores=[]
+    // this.currentscore1: null;
     this.Games=database.listGames();
     console.log(this.auth.user);
   }
